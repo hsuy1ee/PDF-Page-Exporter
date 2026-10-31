@@ -1,0 +1,27 @@
+# Machine-specific registration.
+/native-helper/com.xsy.pdf_page_exporter.json
+
+# Build output and Python caches.
+/native-helper/build-output/
+/native-helper/pyinstaller-work/
+/native-helper/pyinstaller-spec/
+__pycache__/
+*.py[cod]
+
+# Distribute Windows binaries separately from source.
+/native-helper/PdfPageExportHost.exe
+/native-helper/_internal/
+/poppler/
+/Release-*.zip
+
+# Icon working files.
+/edge-extension/icons/source-chromakey.png
+/edge-extension/icons/icon-master.png
+
+# Local environment and diagnostics.
+.venv/
+.env
+.env.*
+*.log
+Thumbs.db
+.DS_Store

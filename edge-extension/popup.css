@@ -1,0 +1,19 @@
+:root { color-scheme: light; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; }
+body { width: 320px; margin: 0; color: #1f1f1f; background: #fff; }
+main { padding: 16px; }
+h1 { margin: 0 0 10px; font-size: 18px; }
+label { display: block; margin: 12px 0 5px; font-size: 13px; font-weight: 600; }
+input, select, button { box-sizing: border-box; width: 100%; font: inherit; }
+input, select { border: 1px solid #c7c7c7; border-radius: 6px; padding: 8px; background: #fff; }
+.source, .hint, .status { margin: 4px 0; font-size: 12px; line-height: 1.4; }
+.source { color: #555; overflow-wrap: anywhere; }
+.hint { color: #777; }
+.all-pages { display: flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 12px; font-weight: 400; }
+.all-pages input { width: auto; margin: 0; }
+.row { display: flex; gap: 10px; }
+.row label { flex: 1; }
+button { margin-top: 18px; padding: 9px 12px; border: 0; border-radius: 6px; color: white; background: #0f6cbd; cursor: pointer; font-weight: 600; }
+button:hover { background: #115ea3; }
+button:disabled { background: #999; cursor: wait; }
+.status { min-height: 17px; margin-top: 10px; color: #0f6cbd; }
+.status.error { color: #b10e1e; }

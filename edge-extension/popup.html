@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF 页面导出图片</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>导出 PDF 页面</h1>
+      <p id="source" class="source">正在识别当前 PDF…</p>
+
+      <label for="pages">页码</label>
+      <input id="pages" type="text" placeholder="例如：3-10 或 1,3,5-8">
+      <p class="hint">请先输入要导出的页码范围。</p>
+
+      <label for="folder-name">文件夹名称（可选）</label>
+      <input id="folder-name" type="text" placeholder="留空则使用默认时间戳名称">
+      <p class="hint">保存到桌面；同名文件夹存在时自动添加序号。</p>
+
+      <label class="all-pages" for="all-pages">
+        <input id="all-pages" type="checkbox">
+        <span>导出全部页面（将再次确认）</span>
+      </label>
+
+      <div class="row">
+        <label for="format">格式
+          <select id="format">
+            <option value="png">PNG（清晰）</option>
+            <option value="jpeg">JPEG（体积较小）</option>
+          </select>
+        </label>
+        <label for="dpi">清晰度
+          <select id="dpi">
+            <option value="200">200 DPI</option>
+            <option value="300">300 DPI</option>
+            <option value="150">150 DPI</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="export" type="button" disabled>导出到桌面</button>
+      <p id="status" class="status" aria-live="polite"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
