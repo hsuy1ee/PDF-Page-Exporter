@@ -2,7 +2,7 @@
 
 项目自身代码使用 MIT 许可证，第三方组件遵循各自许可证。
 
-- **Poppler 及依赖、数据文件**：不纳入源码仓库。分发运行包时需保留上游版权及许可证文件，核对对应版本的再分发及源码提供要求。`share/poppler/COPYING` 是数据文件说明，不代表全部二进制及依赖的许可。
-- **Python、Tcl/Tk、PyInstaller 等运行和打包组件**：exe 和 `_internal/` 不纳入源码仓库。分发运行包时需保留对应版权和许可证说明。
+- **Poppler 26.02.0 及依赖、数据文件**：Windows 运行文件位于 `poppler/`，保留包内的版权及许可证文件。Windows 构建项目：[poppler-windows](https://github.com/oschwartz10612/poppler-windows/releases/tag/v26.02.0-0)；Poppler 对应版本源码：[poppler-26.02.0.tar.xz](https://poppler.freedesktop.org/poppler-26.02.0.tar.xz)。`share/poppler/COPYING` 是数据文件说明，不代表全部二进制及依赖的许可。
+- **Python、Tcl/Tk、PyInstaller 等运行和打包组件**：本地助手 exe 和 `_internal/` 随仓库提供。Tcl/Tk 许可位于 `_internal/_tcl_data/license.terms` 和 `_internal/_tk_data/license.terms`；其他许可见 `docs/licenses/`。
 
-本文件不是完整运行包的许可证清单，项目的 MIT 许可证不替代第三方许可证。
+项目的 MIT 许可证不替代第三方许可证。

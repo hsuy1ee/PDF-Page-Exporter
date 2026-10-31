@@ -4,7 +4,7 @@
 
 ## 安装
 
-运行前需要本地助手和 Poppler。若只有源码，请先按下方说明准备依赖。
+仓库已包含 Windows x64 本地助手、运行依赖和 Poppler，无需安装 Python。点击 GitHub 页面上的 **Code → Download ZIP**，解压整个文件夹后按以下步骤安装。请勿只下载扩展文件夹。
 
 ### 1. 开启开发人员模式
 
@@ -40,13 +40,13 @@
 
 可以选择图片格式、清晰度及输出文件夹名称。未识别到本地 PDF 时，会弹出文件选择窗口。关闭扩展弹窗后，任务仍会继续；关闭浏览器可能中断任务。
 
-## 从源码运行
+## 修改与重新构建
 
-源码仓库不包含 exe、运行依赖或 Poppler。
+普通使用无需构建。修改 `native-helper/PdfPageExportHost.py` 后，再重新打包：
 
 1. 准备 Windows x64 Python（含 Tkinter），安装 PyInstaller：`py -m pip install pyinstaller`。
 2. 在项目目录运行 `./Build-NativeHelper.ps1`，生成本地助手。exe 和 `_internal` 文件夹需一起保留。
-3. 准备 Poppler Windows x64 运行包，使 `pdftocairo.exe`、`pdfinfo.exe` 及配套依赖位于 `poppler/poppler-26.02.0/Library/bin/`。
+3. 保留仓库自带的 `poppler/` 目录，程序会使用其中的 `poppler/poppler-26.02.0/Library/bin/`。
 4. 按上方步骤安装扩展。
 
 测试：`py -m unittest discover -s tests` 和 `node --test tests/extension.test.cjs`。Python 导出测试需要 Poppler。

@@ -1,0 +1,4 @@
+# Preserve bundled runtime files byte-for-byte, including extensionless data.
+/native-helper/_internal/** -text
+/native-helper/PdfPageExportHost.exe -text
+/poppler/** -text

@@ -6,12 +6,10 @@
 /native-helper/pyinstaller-work/
 /native-helper/pyinstaller-spec/
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
 
-# Distribute Windows binaries separately from source.
-/native-helper/PdfPageExportHost.exe
-/native-helper/_internal/
-/poppler/
+# Original download archive; extracted runtime files are included.
 /Release-*.zip
 
 # Icon working files.
