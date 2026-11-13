@@ -76,6 +76,38 @@ function popupHarness(chrome) {
 }
 
 (async () => {
+  const viewerPrefix = "chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/";
+  const localUrl = "file:///E:/profile/" + encodeURI("考研/教材/物理光学学习指导与题解 (刘翠红).pdf");
+  const expectedPath = "E:\\profile\\考研\\教材\\物理光学学习指导与题解 (刘翠红).pdf";
+  for (const [url, expected] of [
+    [localUrl, expectedPath],
+    [viewerPrefix + localUrl, expectedPath],
+    [viewerPrefix + localUrl + "#page=12", expectedPath],
+    [viewerPrefix + "file:///C:/100%25%20%23%20%2520.pdf", "C:\\100% # %20.pdf"],
+    [viewerPrefix + "https://example.com/sample.pdf", null],
+    ["https://example.com/file:///C:/sample.pdf", null],
+    [viewerPrefix + "file:///C:/notes.txt", null],
+    [viewerPrefix + "file:///C:/bad%ZZ.pdf", null]
+  ]) {
+    const current = browserHarness();
+    current.chrome.tabs.query = async () => [{ url }];
+    const ui = popupHarness(current.chrome);
+    await flush();
+    assert.equal(ui.source.textContent, expected
+      ? `当前文件：${expected.split("\\").pop()}`
+      : url.includes("bad%ZZ")
+        ? "无法读取当前标签页；点击导出后请选择文件。"
+        : "未识别到本地 PDF；点击导出后请选择文件。");
+    ui.pages.value = "12";
+    ui.pages.trigger("input");
+    await ui.export.click();
+    await flush();
+    assert.equal(current.ports.length, 1);
+    assert.equal(current.ports[0].request.sourcePath, expected, url);
+    current.ports[0].onMessage.emit({ ok: true, count: 1 });
+    await flush();
+  }
+  console.log("PASS: direct and PDF Viewer local URLs, Chinese/space/escaped filenames, page fragments, unsupported sources");
   const harness = browserHarness();
   const { chrome, data, ports } = harness;
   const popup = popupHarness(chrome);

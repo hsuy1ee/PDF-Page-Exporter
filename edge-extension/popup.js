@@ -7,6 +7,9 @@ const allPagesInput = document.getElementById("all-pages");
 const exportButton = document.getElementById("export");
 
 function filePathFromUrl(url) {
+  // PDF Viewer wraps the original file URL in its own extension URL.
+  const viewerPrefix = "chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/";
+  if (url?.startsWith(viewerPrefix)) url = url.slice(viewerPrefix.length);
   if (!url || !url.startsWith("file:///")) return null;
   let path = decodeURIComponent(new URL(url).pathname);
   if (/^\/[A-Za-z]:\//.test(path)) path = path.slice(1);
